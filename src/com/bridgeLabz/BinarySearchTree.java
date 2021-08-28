@@ -8,13 +8,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     private MyNode<T> addRecursively(MyNode<T> currentNode, T data) {
-
         if (currentNode == null)
             return new MyNode<>(data);
 
         if (data.compareTo(currentNode.data) > 0)
             currentNode.right = addRecursively(currentNode.right, data);
-        else if (data.compareTo(currentNode.data) < 0)
+
+        if (data.compareTo(currentNode.data) < 0)
             currentNode.left = addRecursively(currentNode.left, data);
 
         return currentNode;
@@ -38,5 +38,23 @@ public class BinarySearchTree<T extends Comparable<T>> {
             size = this.getSizeRecursively(root.left) + 1 + this.getSizeRecursively(root.right);
 
         return size;
+    }
+
+    public void searchElement(T data) {
+        MyNode<T> currentNode = this.searchRecursively(root, data);
+        System.out.println(currentNode.data + " FOUND");
+    }
+
+    private MyNode<T> searchRecursively(MyNode<T> currentNode, T data) {
+        if (currentNode == null || currentNode.data == data)
+            return currentNode;
+
+        if (data.compareTo(currentNode.data) < 0)
+            return searchRecursively(currentNode.left, data);
+
+        if (data.compareTo(currentNode.data) > 0)
+            return searchRecursively(currentNode.right, data);
+
+        return currentNode;
     }
 }

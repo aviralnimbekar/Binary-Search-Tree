@@ -21,7 +21,10 @@ public class BinaryTree {
 
             binaryTree.add(input);
         }
-
         binaryTree.getSize();
+
+        System.out.println("Enter data to search");
+        int searchData = scanner.nextInt();
+        binaryTree.searchElement(searchData);
     }
 }
