@@ -1,5 +1,7 @@
 package com.bridgeLabz;
 
+import java.util.Scanner;
+
 /**
  * Purpose - To create a Binary Tree structure to store data
  *
@@ -9,9 +11,17 @@ public class BinaryTree {
 
     public static void main(String[] args) {
         BinarySearchTree<Integer> binaryTree = new BinarySearchTree<>();
+        Scanner scanner = new Scanner(System.in);
 
-        binaryTree.add(56);
-        binaryTree.add(30);
-        binaryTree.add(70);
+        while (true) {
+            System.out.println("Enter element: ");
+            int input = scanner.nextInt();
+            if (input == 0)
+                break;
+
+            binaryTree.add(input);
+        }
+
+        binaryTree.getSize();
     }
 }

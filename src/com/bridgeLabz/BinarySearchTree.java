@@ -19,4 +19,24 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         return currentNode;
     }
+
+    public void getSize() {
+        int size = getSizeRecursively(root);
+
+        if (size == 0)
+            System.out.println("Tree is empty");
+        else
+            System.out.println("Elements in tree = " + size);
+    }
+
+    private int getSizeRecursively(MyNode<T> root) {
+        int size;
+
+        if (root == null)
+            size = 0;
+        else
+            size = this.getSizeRecursively(root.left) + 1 + this.getSizeRecursively(root.right);
+
+        return size;
+    }
 }
